@@ -11,6 +11,7 @@ class Cart {
     } else {
       cartItems[product] = count;
     }
+    // calculateTotalPrice();
   }
 
   // 카트 안에서 상품 갯수 변경하는 메소드
@@ -26,11 +27,6 @@ class Cart {
   void removeCartItem(Product item){
     cartItems.remove(item);
     calculateTotalPrice();
-  }
-
-  // 각 상품별 합계금액(상품 가격 * 갯수)을 계산하는 메소드
-  int calculateItemTotalPrice(Product product) {
-    return product.price * cartItems[product]!;
   }
 
   // 모든 상품들을 다 더한 총 합계금액을 계산하는 메소드
