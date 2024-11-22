@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
 class PurchaseBox extends StatelessWidget {
+  const PurchaseBox({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -40,11 +42,11 @@ class PurchaseBox extends StatelessWidget {
                   width: 40,
                   height: 40,
                   color: Colors.white,
-                  child: Icon(Icons.add_shopping_cart_outlined),
+                  child: const Icon(Icons.add_shopping_cart_outlined),
                 )
               ],
             ),
-            Spacer()
+            const Spacer()
           ],
         ),
       ),
