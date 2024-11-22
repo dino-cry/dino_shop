@@ -11,6 +11,16 @@ class CartSummaryBar extends StatelessWidget {
       width: double.infinity,
       height: 100,
       color: Colors.green,
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 30),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Text("18,000원"),
+            OutlinedButton(onPressed: () {}, child: Text("구매하기")),
+          ],
+        ),
+      ),
     );
   }
 }

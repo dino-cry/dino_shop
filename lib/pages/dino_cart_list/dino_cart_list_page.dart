@@ -38,6 +38,16 @@ List<Product>? productList = [
       price: 9000,
       contents: "Sample Content",
       image: ['assets/images/product/smaple_image.png']),
+  Product(
+      name: "sample",
+      price: 9000,
+      contents: "Sample Content",
+      image: ['assets/images/product/smaple_image.png']),
+  Product(
+      name: "sample",
+      price: 9000,
+      contents: "Sample Content",
+      image: ['assets/images/product/smaple_image.png']),
 ];
 
 class DinoCartListPage extends StatelessWidget {
