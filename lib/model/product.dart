@@ -4,7 +4,7 @@ class Product {
   String name;
   int price;
   String contents;
-  List<Path> image;
+  List<String> image;
 
   Product({
     required this.name,
