@@ -11,8 +11,9 @@ class ProductListView extends StatelessWidget {
       children: [
         ClipRect(
           child: Image.asset(
-            'assets/images/product/dino_figure.avif',
+            'assets/images/product/01.jpg',
             width: 430,
+            height: 280,
             fit: BoxFit.cover,
           ),
         ),
