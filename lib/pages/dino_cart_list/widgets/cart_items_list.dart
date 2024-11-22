@@ -6,25 +6,16 @@ import 'package:flutter/material.dart';
 class CartItemsList extends StatefulWidget {
   Cart userCart;
 
-  CartItemsList(this.userCart);
+  void Function(Product item, bool isPositive) updateCartItem;
+  void Function(Product item) removeCartItem;
+
+  CartItemsList(this.userCart, this.updateCartItem, this.removeCartItem);
 
   @override
   State<CartItemsList> createState() => _CartItemsListState();
 }
 
 class _CartItemsListState extends State<CartItemsList> {
-  void updateCartItem(Product item, bool isPositive) {
-    setState(() {
-      widget.userCart.updateCartItem(item, isPositive);
-    });
-  }
-
-  void removeCartItem(Product item){
-    setState(() {
-      widget.userCart.removeCartItem(item);
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
     return Expanded(
@@ -33,7 +24,7 @@ class _CartItemsListState extends State<CartItemsList> {
         child: ListView(
           children: [
             for (Product item in widget.userCart.cartItems.keys)
-              CartItem(item, widget.userCart.cartItems[item]!, updateCartItem, removeCartItem),
+              CartItem(item, widget.userCart.cartItems[item]!, widget.updateCartItem, widget.removeCartItem),
           ],
         ),
       ),

@@ -64,6 +64,18 @@ class DinoCartListPage extends StatefulWidget {
 }
 
 class _DinoCartListPageState extends State<DinoCartListPage> {
+  void updateCartItem(Product item, bool isPositive) {
+    setState(() {
+      widget.userCart.updateCartItem(item, isPositive);
+    });
+  }
+
+  void removeCartItem(Product item){
+    setState(() {
+      widget.userCart.removeCartItem(item);
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -74,7 +86,7 @@ class _DinoCartListPageState extends State<DinoCartListPage> {
       body: Column(
         children: [
           // 장바구니 아이템 목록
-          CartItemsList(widget.userCart),
+          CartItemsList(widget.userCart, updateCartItem, removeCartItem),
 
           // 구매 정보 박스
           CartSummaryBar(widget.userCart),
