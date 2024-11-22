@@ -7,30 +7,28 @@ class LogInBox extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: EdgeInsets.all(30),
-      child: Column(
-        children: [
-          Image.asset('assets/images/application/logo.png'),
-          TextFormField(
-              controller: _emailController,
-              decoration: InputDecoration(labelText: 'EMAIL'),
-              keyboardType: TextInputType.emailAddress,
-              inputFormatters: [EnglishOnly()]),
-          TextFormField(
-            controller: _passwordController,
-            obscureText: true,
-            decoration: InputDecoration(labelText: 'PASSWORD'),
-          ),
-          ElevatedButton(
-              onPressed: () {
-                print('이메일: ${_emailController.text}');
-                print('비밀번호: ${_passwordController}');
-              },
-              child: Text('LOGIN'))
-        ],
-      ),
+    return Column(
+      children: [
+        TextFormField(
+            controller: _emailController,
+            decoration: InputDecoration(labelText: 'EMAIL'),
+            keyboardType: TextInputType.emailAddress,
+            inputFormatters: [EnglishOnly()]),
+        TextFormField(
+          controller: _passwordController,
+          obscureText: true,
+          decoration: InputDecoration(labelText: 'PASSWORD'),
+        ),
+        SizedBox(
+          height: 60,
+        ),
+        ElevatedButton(
+            onPressed: () {
+              print('이메일: ${_emailController.text}');
+              print('비밀번호: ${_passwordController}');
+            },
+            child: Text('LOGIN'))
+      ],
     );
-    ;
   }
 }

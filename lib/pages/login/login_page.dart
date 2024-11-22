@@ -31,7 +31,19 @@ class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: LogInBox(),
+      body: Padding(
+        padding: const EdgeInsets.all(60),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Image.asset('assets/images/application/logo.png'),
+            const SizedBox(
+              height: 30,
+            ),
+            LogInBox(),
+          ],
+        ),
+      ),
     );
   }
 }
