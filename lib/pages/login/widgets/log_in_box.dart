@@ -9,6 +9,26 @@ class LogInBox extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
+        // 아이디, 비밀번호 입력
+        LoginTextField(),
+
+        SizedBox(height: 60),
+
+        // 로그인 버튼
+        ElevatedButton(
+          onPressed: () {
+            print('이메일: ${_emailController.text}');
+            print('비밀번호: ${_passwordController}');
+          },
+          child: Text('LOGIN'),
+        )
+      ],
+    );
+  }
+
+  Column LoginTextField() {
+    return Column(
+      children: [
         TextFormField(
             controller: _emailController,
             decoration: InputDecoration(labelText: 'EMAIL'),
@@ -19,15 +39,6 @@ class LogInBox extends StatelessWidget {
           obscureText: true,
           decoration: InputDecoration(labelText: 'PASSWORD'),
         ),
-        SizedBox(
-          height: 60,
-        ),
-        ElevatedButton(
-            onPressed: () {
-              print('이메일: ${_emailController.text}');
-              print('비밀번호: ${_passwordController}');
-            },
-            child: Text('LOGIN'))
       ],
     );
   }

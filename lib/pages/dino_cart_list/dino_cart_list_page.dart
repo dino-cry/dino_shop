@@ -1,5 +1,5 @@
+import 'package:dino_shop/model/cart.dart';
 import 'package:dino_shop/model/product.dart';
-import 'package:dino_shop/pages/dino_cart_list/cart.dart';
 import 'package:dino_shop/pages/dino_cart_list/widgets/cart_items_list.dart';
 import 'package:dino_shop/pages/dino_cart_list/widgets/cart_summary_bar.dart';
 import 'package:dino_shop/theme.dart';

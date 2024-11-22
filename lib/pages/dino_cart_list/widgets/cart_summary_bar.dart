@@ -1,4 +1,4 @@
-import 'package:dino_shop/pages/dino_cart_list/cart.dart';
+import 'package:dino_shop/model/cart.dart';
 import 'package:flutter/material.dart';
 
 class CartSummaryBar extends StatefulWidget {
