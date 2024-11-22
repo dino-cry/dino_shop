@@ -1,3 +1,4 @@
+import 'package:dino_shop/pages/login/widgets/english_only.dart';
 import 'package:dino_shop/theme.dart';
 import 'package:flutter/material.dart';
 
@@ -39,9 +40,10 @@ class _LoginPageState extends State<LoginPage> {
           children: [
             Image.asset('assets/images/application/logo.png'),
             TextFormField(
-              controller: _emailController,
-              decoration: InputDecoration(labelText: 'EMAIL'),
-            ),
+                controller: _emailController,
+                decoration: InputDecoration(labelText: 'EMAIL'),
+                keyboardType: TextInputType.emailAddress,
+                inputFormatters: [EnglishOnly()]),
             TextFormField(
               controller: _passwordController,
               obscureText: true,
