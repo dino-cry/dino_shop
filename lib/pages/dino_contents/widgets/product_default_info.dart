@@ -1,3 +1,4 @@
+import 'package:dino_shop/model/product.dart';
 import 'package:flutter/material.dart';
 
 IconData star = Icons.star_rate_rounded;
@@ -8,7 +9,9 @@ Icon yellowStar = Icon(
 );
 
 class ProductDefaultInfo extends StatelessWidget {
-  const ProductDefaultInfo({super.key});
+  Product item;
+
+  ProductDefaultInfo(this.item);
 
   @override
   Widget build(BuildContext context) {
@@ -19,12 +22,12 @@ class ProductDefaultInfo extends StatelessWidget {
           Row(
             children: [
               Text(
-                '프리미엄 공룡 피규어 세트',
+                item.name,
                 style: Theme.of(context).textTheme.bodyLarge,
               ),
               const Spacer(),
               Text(
-                '16,000원',
+                '${item.price}원',
                 style: Theme.of(context).textTheme.bodySmall,
               )
             ],

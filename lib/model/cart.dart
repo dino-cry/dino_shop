@@ -1,17 +1,19 @@
 import 'package:dino_shop/model/product.dart';
 
 class Cart {
+  Cart _userCart = Cart();
+
   Map<Product, int> cartItems = {};
   int totalPrice = 0;
 
   // 상품을 카트에 추가하는 메소드
-  void addItem(Product product, int count) {
+  void addItem(Product product, int quantity) {
     if (cartItems.containsKey(product)) {
-      cartItems[product] = cartItems[product]! + count;
+      cartItems[product] = cartItems[product]! + quantity;
     } else {
-      cartItems[product] = count;
+      cartItems[product] = quantity;
     }
-    // calculateTotalPrice();
+    calculateTotalPrice();
   }
 
   // 카트 안에서 상품 갯수 변경하는 메소드
