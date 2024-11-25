@@ -61,7 +61,7 @@ class _CartItemState extends State<CartItem> {
           Row(
             children: [
               // 갯수 조절 버튼
-              ControlItemCount(),
+              ControlItemQuantity(),
 
               Spacer(),
 
@@ -88,7 +88,7 @@ class _CartItemState extends State<CartItem> {
     );
   }
 
-  Row ControlItemCount() {
+  Row ControlItemQuantity() {
     return Row(
       children: [
         IconButton(

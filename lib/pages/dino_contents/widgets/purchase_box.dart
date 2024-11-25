@@ -26,7 +26,7 @@ class _PurchaseBoxState extends State<PurchaseBox> {
     });
   }
 
-  void clearQuantity(){
+  void clearQuantity() {
     setState(() {
       quantity = 0;
     });
@@ -47,6 +47,7 @@ class _PurchaseBoxState extends State<PurchaseBox> {
                 // 상품 갯수 조절 버튼
                 QuantityControlButton(),
 
+                // 총 금액 출력
                 Text(
                   '총 금액 : ${widget.item.price * quantity}원',
                   style: TextStyle(
@@ -54,18 +55,14 @@ class _PurchaseBoxState extends State<PurchaseBox> {
                       fontSize: 17.5,
                       fontWeight: FontWeight.bold),
                 ),
-                // Container(
-                //   width: 40,
-                //   height: 40,
-                //   color: Colors.white,
-                //   child: const Icon(Icons.add_shopping_cart_outlined),
-                // ),
+
+                // 장바구니 담기 버튼
                 IconButton(
                   onPressed: () {
                     // 카트에 아이템 담기
                     Cart userCart = Cart();
                     userCart.addItem(widget.item, quantity);
-
+                    
                     // 상품 갯수 초기화
                     clearQuantity();
                   },

@@ -1,7 +1,12 @@
 import 'package:dino_shop/model/product.dart';
 
 class Cart {
-  Cart _userCart = Cart();
+  // Singleton 사용
+  static final Cart _userCart = Cart._internal();
+  Cart._internal();
+  factory Cart() {
+    return _userCart;
+  }
 
   Map<Product, int> cartItems = {};
   int totalPrice = 0;
@@ -20,13 +25,16 @@ class Cart {
   void updateCartItem(Product item, bool isPositive) {
     if (cartItems.containsKey(item)) {
       cartItems[item] = cartItems[item]! + (isPositive ? 1 : -1);
+      
+      // 아이템 갯수가 0 이하가 되면 아이템 삭제.
+      if (cartItems[item]! <= 0) removeCartItem(item);
     } else {
       cartItems[item] = 1;
     }
     calculateTotalPrice();
   }
 
-  void removeCartItem(Product item){
+  void removeCartItem(Product item) {
     cartItems.remove(item);
     calculateTotalPrice();
   }
