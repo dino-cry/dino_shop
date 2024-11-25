@@ -1,4 +1,5 @@
-import 'package:dino_shop/pages/dino_contents/widgets/product_list_view.dart';
+import 'package:dino_shop/model/product.dart';
+import 'package:dino_shop/pages/dino_contents/widgets/product_info_view.dart';
 import 'package:dino_shop/pages/dino_contents/widgets/purchase_box.dart';
 import 'package:dino_shop/theme.dart';
 import 'package:flutter/material.dart';
@@ -9,7 +10,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: DinoContentsPage(),
+      home: DinoContentsPage(sampleProduct),
       themeMode: ThemeMode.system,
       theme: theme,
       darkTheme: darkTheme,
@@ -20,6 +21,10 @@ class MyApp extends StatelessWidget {
 // 민트색 코드:32FAC5 노란색 코드:FFF068
 
 class DinoContentsPage extends StatelessWidget {
+  Product item;
+
+  DinoContentsPage(this.item);
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -27,12 +32,12 @@ class DinoContentsPage extends StatelessWidget {
         title: Text('Dino Shop'),
         backgroundColor: Theme.of(context).appBarTheme.backgroundColor,
       ),
-      body: const Column(
+      body: Column(
         children: [
           Expanded(
-            child: ProductListView(),
+            child: ProductInfoView(item),
           ),
-          PurchaseBox()
+          PurchaseBox(item),
         ],
       ),
     );
