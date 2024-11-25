@@ -1,9 +1,12 @@
+import 'package:dino_shop/model/product.dart';
 import 'package:dino_shop/pages/dino_contents/widgets/product_default_info.dart';
 import 'package:dino_shop/pages/dino_contents/widgets/product_spec.dart';
 import 'package:flutter/material.dart';
 
-class ProductListView extends StatelessWidget {
-  const ProductListView({super.key});
+class ProductInfoView extends StatelessWidget {
+  Product item;
+  
+  ProductInfoView(this.item);
 
   @override
   Widget build(BuildContext context) {
@@ -11,14 +14,19 @@ class ProductListView extends StatelessWidget {
       children: [
         ClipRect(
           child: Image.asset(
-            'assets/images/product/01.jpg',
+            item.image[0],
             width: 430,
             height: 280,
             fit: BoxFit.cover,
           ),
         ),
-        ProductDefaultInfo(),
+
+        // 상품 기초정보
+        ProductDefaultInfo(item),
+
         const Divider(),
+
+        // 상품 상세정보
         ProductSpec()
       ],
     );
