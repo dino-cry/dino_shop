@@ -3,10 +3,6 @@ import 'package:dino_shop/pages/dino_contents/widgets/purchase_box.dart';
 import 'package:dino_shop/theme.dart';
 import 'package:flutter/material.dart';
 
-void main() {
-  runApp(const MyApp());
-}
-
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
