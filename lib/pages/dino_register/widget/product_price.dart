@@ -2,6 +2,9 @@ import 'package:dino_shop/pages/dino_register/dino_register_page.dart';
 import 'package:flutter/material.dart';
 
 class ProductPrice extends StatelessWidget {
+  void Function(int price) setPrice;
+  ProductPrice(this.setPrice);
+
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -23,6 +26,9 @@ class ProductPrice extends StatelessWidget {
                 style: Theme.of(context).textTheme.bodyMedium,
                 keyboardType: TextInputType.numberWithOptions(),
                 textAlign: TextAlign.end,
+                onChanged: (text) => {
+                  setPrice(int.parse(text)),
+                },
               ),
             ),
             SizedBox(width: 10),

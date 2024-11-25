@@ -1,3 +1,4 @@
+import 'package:dino_shop/model/product.dart';
 import 'package:dino_shop/pages/dino_register/widget/product_contents.dart';
 import 'package:dino_shop/pages/dino_register/widget/product_image.dart';
 import 'package:dino_shop/pages/dino_register/widget/product_name.dart';
@@ -13,7 +14,24 @@ class _DinoRegisterPageState extends State<DinoRegisterPage> {
   late String name;
   late int price;
   late String contents;
-  late List<Path> images;
+
+  void setName(String newName) {
+    setState(() {
+      name = newName;
+    });
+  }
+
+  void setPrice(int newPrice) {
+    setState(() {
+      price = newPrice;
+    });
+  }
+
+  void setContents(String newContents) {
+    setState(() {
+      contents = newContents;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -31,11 +49,11 @@ class _DinoRegisterPageState extends State<DinoRegisterPage> {
             SliverList(
               delegate: SliverChildListDelegate([
                 SizedBox(height: 8),
-                ProductName(name),
+                ProductName(setName),
                 SizedBox(height: 8),
-                ProductPrice(),
+                ProductPrice(setPrice),
                 SizedBox(height: 8),
-                ProductContents(),
+                ProductContents(setContents),
                 SizedBox(height: 15),
                 register(),
               ]),
@@ -52,7 +70,9 @@ class _DinoRegisterPageState extends State<DinoRegisterPage> {
       width: double.infinity,
       height: 50,
       child: ElevatedButton(
-        onPressed: () {},
+        onPressed: () {
+          Product(name: name, price: price, contents: contents, image: ['']);
+        },
         child: Text('등록하기'),
         style: ButtonStyle(
           backgroundColor:

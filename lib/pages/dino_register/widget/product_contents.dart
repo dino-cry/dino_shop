@@ -2,6 +2,9 @@ import 'package:dino_shop/pages/dino_register/dino_register_page.dart';
 import 'package:flutter/material.dart';
 
 class ProductContents extends StatelessWidget {
+  void Function(String contents) setContents;
+  ProductContents(this.setContents);
+
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -19,6 +22,7 @@ class ProductContents extends StatelessWidget {
           cursorWidth: 1.5,
           cursorColor: Colors.black,
           style: Theme.of(context).textTheme.bodyMedium,
+          onChanged: (text) => {setContents(text)},
         )
       ],
     );
