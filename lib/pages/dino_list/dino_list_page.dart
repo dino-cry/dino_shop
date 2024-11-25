@@ -1,3 +1,4 @@
+import 'package:dino_shop/model/product.dart';
 import 'package:dino_shop/pages/dino_list/product_card.dart';
 import 'package:dino_shop/theme.dart';
 import 'package:flutter/material.dart';
@@ -41,33 +42,6 @@ class DinoListPage extends StatefulWidget {
 }
 
 class _DinoListPageState extends State<DinoListPage> {
-  // 샘플 데이터 리스트
-  final List<Map<String, dynamic>> products = [
-    {
-      'brand': '브랜드 A',
-      'description': '상품 설명 A',
-      'price': '20,000',
-      'rating': 4.9,
-      'reviews': 5,
-      'image': 'assets/images/product/t.ing'
-    },
-    {
-      'brand': '브랜드 B',
-      'description': '상품 설명 B',
-      'price': '25,000',
-      'rating': 4.8,
-      'reviews': 10,
-      'image': 'assets/images/product/t.ing'
-    },
-    {
-      'brand': '브랜드 C',
-      'description': '상품 설명 C',
-      'price': '30,000',
-      'rating': 4.7,
-      'reviews': 8,
-      'image': 'assets/images/product/t.ing'
-    },
-  ];
 
   // 좋아요 상태 리스트 (각 제품마다 별도의 좋아요 상태를 관리)
   late List<bool> screenStars;
@@ -75,7 +49,7 @@ class _DinoListPageState extends State<DinoListPage> {
   @override
   void initState() {
     super.initState();
-    screenStars = List<bool>.filled(products.length, false);
+    screenStars = List<bool>.filled(productList.length, false);
   }
 
   @override
@@ -95,9 +69,9 @@ class _DinoListPageState extends State<DinoListPage> {
             mainAxisSpacing: 10, // 행 간격
             childAspectRatio: 0.7, // 항목의 가로:세로 비율
           ),
-          itemCount: products.length,
+          itemCount: productList.length,
           itemBuilder: (BuildContext context, int index) {
-            final product = products[index]; // 현재 항목 데이터
+            final product = productList[index]; // 현재 항목 데이터
             return ProductCard(
               product: product,
               isFavorite: screenStars[index],
