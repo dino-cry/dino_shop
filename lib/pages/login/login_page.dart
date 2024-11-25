@@ -1,3 +1,4 @@
+import 'package:dino_shop/pages/dino_list/dino_list_page.dart';
 import 'package:dino_shop/pages/login/widgets/log_in_box.dart';
 import 'package:dino_shop/theme.dart';
 import 'package:flutter/material.dart';
@@ -40,7 +41,11 @@ class _LoginPageState extends State<LoginPage> {
             const SizedBox(
               height: 30,
             ),
-            LogInBox(),
+            LogInBox(onLoginSuccess: () {
+              Navigator.push(context,
+              MaterialPageRoute(builder: (context) => DinoListPage()),
+              );
+            }),
           ],
         ),
       ),
