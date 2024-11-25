@@ -56,7 +56,7 @@ class MyApp extends StatelessWidget {
 }
 
 class DinoCartListPage extends StatefulWidget {
-  Cart userCart;
+  final Cart userCart;
   DinoCartListPage(this.userCart);
 
   @override
@@ -70,7 +70,7 @@ class _DinoCartListPageState extends State<DinoCartListPage> {
     });
   }
 
-  void removeCartItem(Product item){
+  void removeCartItem(Product item) {
     setState(() {
       widget.userCart.removeCartItem(item);
     });
