@@ -4,6 +4,7 @@ import 'package:dino_shop/pages/dino_register/widget/product_image.dart';
 import 'package:dino_shop/pages/dino_register/widget/product_name.dart';
 import 'package:dino_shop/pages/dino_register/widget/product_price.dart';
 import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
 
 class DinoRegisterPage extends StatefulWidget {
   @override
@@ -14,22 +15,40 @@ class _DinoRegisterPageState extends State<DinoRegisterPage> {
   late String name;
   late int price;
   late String contents;
+  List<XFile?> images = []; // 보여질 이미지들
 
+  /// 상품 이름 지정하는 메서드
   void setName(String newName) {
     setState(() {
       name = newName;
     });
   }
 
+  /// 상품 가격 지정하는 메서드
   void setPrice(int newPrice) {
     setState(() {
       price = newPrice;
     });
   }
 
+  /// 상품 설정 지정하는 메서드
   void setContents(String newContents) {
     setState(() {
       contents = newContents;
+    });
+  }
+
+  /// 상품 이미지 지정하는 메서드
+  void selectImage(List<XFile?> image) {
+    setState(() {
+      images.addAll(image);
+    });
+  }
+
+  /// 등록한 이미지 삭제하는 메서드
+  void deleteImage(XFile? image) {
+    setState(() {
+      images.remove(image);
     });
   }
 
@@ -44,7 +63,7 @@ class _DinoRegisterPageState extends State<DinoRegisterPage> {
         child: CustomScrollView(
           slivers: [
             SliverToBoxAdapter(
-              child: ProductImage(),
+              child: ProductImage(images, selectImage, deleteImage),
             ),
             SliverList(
               delegate: SliverChildListDelegate([
@@ -71,7 +90,14 @@ class _DinoRegisterPageState extends State<DinoRegisterPage> {
       height: 50,
       child: ElevatedButton(
         onPressed: () {
-          Product(name: name, price: price, contents: contents, image: ['']);
+          var imagePath =
+              List.generate(images.length, (int i) => images[i]!.path);
+          Product(
+            name: name,
+            price: price,
+            contents: contents,
+            image: imagePath,
+          );
         },
         child: Text('등록하기'),
         style: ButtonStyle(

@@ -2,15 +2,15 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 
-class ProductImage extends StatefulWidget {
-  @override
-  State<ProductImage> createState() => _ProductImageState();
-}
-
-class _ProductImageState extends State<ProductImage> {
+class ProductImage extends StatelessWidget {
   final picker = ImagePicker();
   List<XFile?> selectedImages = []; // 갤러리에서 선택한 이미지
-  List<XFile?> images = []; // 보여질 이미지들
+
+  List<XFile?> images; // 보여질 이미지들
+  Function(List<XFile?> images) selectImages;
+  Function(XFile? image) deleteImage;
+
+  ProductImage(this.images, this.selectImages, this.deleteImage);
 
   @override
   Widget build(BuildContext context) {
@@ -34,10 +34,8 @@ class _ProductImageState extends State<ProductImage> {
         onPressed: () async {
           // image picker 로 갤러리에서 가져온 이미지
           selectedImages = await picker.pickMultiImage();
-          setState(() {
-            // 갤러리에서 가져온 이미지들 images 에 추가
-            images.addAll(selectedImages);
-          });
+          // 갤러리에서 가져온 이미지들 images 에 추가
+          selectImages(selectedImages);
         },
         icon: Icon(Icons.camera_alt_outlined),
         color: Colors.grey,
@@ -72,10 +70,8 @@ class _ProductImageState extends State<ProductImage> {
           // 취소 버튼
           GestureDetector(
             onTap: () {
-              setState(() {
-                // x 버튼 누르면 images 에서 해당 사진 지우기
-                images.remove(images[index]);
-              });
+              // x 버튼 누르면 images 에서 해당 사진 지우기
+              deleteImage(images[index]);
             },
             child: Container(
               child: Icon(
