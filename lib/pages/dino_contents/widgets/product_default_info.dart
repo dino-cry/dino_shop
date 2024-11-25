@@ -1,3 +1,4 @@
+import 'package:dino_shop/constant.dart';
 import 'package:dino_shop/model/product.dart';
 import 'package:flutter/material.dart';
 
@@ -27,7 +28,7 @@ class ProductDefaultInfo extends StatelessWidget {
               ),
               const Spacer(),
               Text(
-                '${item.price}원',
+                '${MONEY_FORMAT.format(item.price)}원',
                 style: Theme.of(context).textTheme.bodySmall,
               )
             ],

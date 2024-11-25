@@ -1,3 +1,4 @@
+import 'package:dino_shop/constant.dart';
 import 'package:dino_shop/model/product.dart';
 import 'package:flutter/material.dart';
 
@@ -39,11 +40,11 @@ class _CartItemState extends State<CartItem> {
             children: [
               Spacer(),
               IconButton(
-                padding: EdgeInsets.only(top: 10),
+                // padding: EdgeInsets.only(top: 20),
                 onPressed: () {
                   widget.removeCartItem(widget.item);
                 },
-                icon: Icon(Icons.remove_circle_outline),
+                icon: Icon(Icons.cancel_outlined),
               ),
             ],
           ),
@@ -66,7 +67,10 @@ class _CartItemState extends State<CartItem> {
               Spacer(),
 
               // 가격 표시
-              Text("${widget.item.price * widget.count}원"),
+              Text(
+                "${MONEY_FORMAT.format(widget.item.price * widget.count)}원",
+                style: Theme.of(context).textTheme.titleMedium,
+              ),
             ],
           )
         ],
@@ -97,7 +101,10 @@ class _CartItemState extends State<CartItem> {
           },
           icon: Icon(Icons.remove_circle_outline),
         ),
-        Text("${widget.count}개"),
+        Text(
+          "${widget.count}개",
+          style: Theme.of(context).textTheme.titleMedium,
+        ),
         IconButton(
           onPressed: () {
             widget.updateCartItem(widget.item, true);

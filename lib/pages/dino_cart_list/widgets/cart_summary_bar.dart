@@ -1,3 +1,4 @@
+import 'package:dino_shop/constant.dart';
 import 'package:dino_shop/model/cart.dart';
 import 'package:flutter/material.dart';
 
@@ -21,7 +22,7 @@ class _CartSummaryBarState extends State<CartSummaryBar> {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Text("${widget.userCart.totalPrice}원"),
+            Text("${MONEY_FORMAT.format(widget.userCart.totalPrice)}원"),
             OutlinedButton(
               onPressed: () {
                 // 구매하기 함수

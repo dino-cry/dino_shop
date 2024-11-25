@@ -1,3 +1,4 @@
+import 'package:dino_shop/constant.dart';
 import 'package:dino_shop/model/cart.dart';
 import 'package:dino_shop/model/product.dart';
 import 'package:flutter/material.dart';
@@ -49,7 +50,7 @@ class _PurchaseBoxState extends State<PurchaseBox> {
 
                 // 총 금액 출력
                 Text(
-                  '총 금액 : ${widget.item.price * quantity}원',
+                  '총 금액 : ${MONEY_FORMAT.format(widget.item.price * quantity)}원',
                   style: TextStyle(
                       color: Colors.white,
                       fontSize: 17.5,
@@ -62,7 +63,7 @@ class _PurchaseBoxState extends State<PurchaseBox> {
                     // 카트에 아이템 담기
                     Cart userCart = Cart();
                     userCart.addItem(widget.item, quantity);
-                    
+
                     // 상품 갯수 초기화
                     clearQuantity();
                   },
