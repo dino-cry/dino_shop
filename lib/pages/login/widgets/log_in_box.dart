@@ -5,8 +5,8 @@ import 'package:flutter/material.dart';
 class LogInBox extends StatelessWidget {
   // final TextEditingController _emailController = TextEditingController();
   // final TextEditingController _passwordController = TextEditingController();
-  var email = "";
-  var password = "";
+  
+  var loginAddress = Manager(email: "email", password: "password");
 
   final VoidCallback onLoginSuccess;
 
@@ -34,12 +34,15 @@ class LogInBox extends StatelessWidget {
               // var email = _emailController.text;
               // var password = _passwordController.text;
 
-              print(email);
-              print(password);
+              print("email = ${loginAddress.email}");
+              print("password = ${loginAddress.password}");
 
               // 관리자 계정 확인
-              if (Manager(email: email, password: password) == managerAddress) {
+              if (loginAddress.addressCheck()) {
                 // 관리자 계정 로그인 성공 시
+
+                isLogined = true;
+
                 _showCustomDialog(
                   context,
                   title: "관리자님!",
@@ -70,13 +73,17 @@ class LogInBox extends StatelessWidget {
           decoration: InputDecoration(labelText: 'EMAIL'),
           keyboardType: TextInputType.emailAddress,
           inputFormatters: [EnglishOnly()],
-          onChanged: (text) => {email = text},
+          onChanged: (text) {
+            loginAddress.email = text;
+          },
         ),
         TextFormField(
           // controller: _passwordController,
           obscureText: true,
           decoration: InputDecoration(labelText: 'PASSWORD'),
-          onChanged: (text) => {password = text},
+          onChanged: (text) {
+            loginAddress.password = text;
+          },
         ),
       ],
     );
