@@ -17,7 +17,11 @@ class _CartSummaryBarState extends State<CartSummaryBar> {
     return Container(
       width: double.infinity,
       height: 100,
-      color: Color(0xFF45AA4A),
+      decoration: BoxDecoration(
+          gradient: LinearGradient(colors: [
+        Color(0xFFA5E78F).withOpacity(0.75), // 시작 색상 (연두)
+        Color(0xFFFAEA94).withOpacity(0.75),
+      ], begin: Alignment.centerLeft, end: Alignment.centerRight)),
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 30),
         child: Row(
@@ -26,12 +30,22 @@ class _CartSummaryBarState extends State<CartSummaryBar> {
             Text(
               "총 ${MONEY_FORMAT.format(widget.userCart.totalPrice)}원",
               style: TextStyle(
+                  shadows: [
+                    Shadow(
+                        color: Color(0x95005C05),
+                        offset: Offset(0, 0),
+                        blurRadius: 15)
+                  ],
                   fontFamily: 'Paperlogy',
                   fontWeight: FontWeight.w700,
                   color: Colors.white,
                   fontSize: 25),
             ),
             OutlinedButton(
+              style: ButtonStyle(
+                  side: WidgetStatePropertyAll(BorderSide.none),
+                  elevation: WidgetStatePropertyAll(2),
+                  shadowColor: WidgetStatePropertyAll(Colors.green)),
               onPressed: () {
                 // 구매하기 함수
               },

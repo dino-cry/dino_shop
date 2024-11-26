@@ -47,9 +47,10 @@ final theme = ThemeData(
     ),
     outlinedButtonTheme: OutlinedButtonThemeData(
         style: OutlinedButton.styleFrom(
-      padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-      backgroundColor: Colors.white,
-    )),
+            padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+            backgroundColor: Colors.white,
+            elevation: 5,
+            shadowColor: Colors.green)),
     floatingActionButtonTheme: FloatingActionButtonThemeData(
         elevation: 0,
         shape: RoundedRectangleBorder(

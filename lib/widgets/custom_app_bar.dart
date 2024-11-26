@@ -68,7 +68,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
                         },
                       ),
                       CupertinoDialogAction(
-                        child: Text("확인"),
+                        child: Text("확인", style: TextStyle(color: Colors.blue)),
                         isDefaultAction: true,
                         onPressed: () {
                           isLogined = false;

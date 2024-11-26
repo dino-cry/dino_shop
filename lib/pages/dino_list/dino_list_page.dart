@@ -59,7 +59,10 @@ class _DinoListPageState extends State<DinoListPage> {
                           : b.price.compareTo(a.price));
                     });
                   },
-                  child: Text(isAscending ? '낮은 가격순' : '높은 가격순'),
+                  child: Text(
+                    isAscending ? '낮은 가격순' : '높은 가격순',
+                    style: TextStyle(fontWeight: FontWeight.bold),
+                  ),
                 ),
               ],
             ),
