@@ -1,4 +1,5 @@
 import 'package:dino_shop/model/product.dart';
+import 'package:dino_shop/pages/dino_list/dino_list_page.dart';
 import 'package:dino_shop/pages/dino_register/widgets/product_contents.dart';
 import 'package:dino_shop/pages/dino_register/widgets/product_image.dart';
 import 'package:dino_shop/pages/dino_register/widgets/product_name.dart';
@@ -113,7 +114,15 @@ class _DinoRegisterPageState extends State<DinoRegisterPage> {
             await confirmDialog(context, '등록이 완료되었습니다.');
 
             // 뒤로가기(상품 리스트 페이지로)
-            Navigator.pop(context);
+            // Navigator.pop(context);
+
+            // 리스트 페이지 임시로 호출
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) {
+                return DinoListPage();
+              }),
+            );
           } else if (images.length <= 0) {
             // 이미지 한 개 이상 선택이 안되어있으면
             await confirmDialog(context, '이미지를 한 개 이상 선택하세요.');
