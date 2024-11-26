@@ -58,7 +58,7 @@ class _CartItemState extends State<CartItem> {
                 padding: const EdgeInsets.only(left: 25),
                 child: Text(
                   widget.item.name,
-                  style: Theme.of(context).textTheme.titleLarge,
+                  style: Theme.of(context).textTheme.bodyLarge,
                 ),
               ),
             ],

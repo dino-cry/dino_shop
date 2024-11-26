@@ -25,13 +25,24 @@ class _CartSummaryBarState extends State<CartSummaryBar> {
           children: [
             Text(
               "총 ${MONEY_FORMAT.format(widget.userCart.totalPrice)}원",
-              style: TextStyle(fontSize: 28, color: Colors.white),
+              style: TextStyle(
+                  fontFamily: 'Paperlogy',
+                  fontWeight: FontWeight.w700,
+                  color: Colors.white,
+                  fontSize: 25),
             ),
             OutlinedButton(
               onPressed: () {
                 // 구매하기 함수
               },
-              child: Text("구매하기"),
+              child: Text(
+                "구매하기",
+                style: TextStyle(
+                    fontFamily: 'Paperlogy',
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold),
+                selectionColor: Colors.green,
+              ),
             ),
           ],
         ),

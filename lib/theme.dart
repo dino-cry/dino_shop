@@ -45,6 +45,11 @@ final theme = ThemeData(
         foregroundColor: const WidgetStatePropertyAll(Colors.white),
       ),
     ),
+    outlinedButtonTheme: OutlinedButtonThemeData(
+        style: OutlinedButton.styleFrom(
+      padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+      backgroundColor: Colors.white,
+    )),
     floatingActionButtonTheme: FloatingActionButtonThemeData(
         elevation: 0,
         shape: RoundedRectangleBorder(
