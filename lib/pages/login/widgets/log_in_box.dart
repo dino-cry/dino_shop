@@ -1,5 +1,6 @@
 import 'package:dino_shop/model/manager.dart';
 import 'package:dino_shop/pages/login/widgets/english_only.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class LogInBox extends StatelessWidget {
@@ -71,20 +72,30 @@ class LogInBox extends StatelessWidget {
         TextFormField(
           // controller: _emailController,
           decoration: InputDecoration(
-              labelText: 'EMAIL',
-              labelStyle: TextStyle(color: Color(0xFF45AA4A))),
+            labelText: 'EMAIL',
+            labelStyle: TextStyle(
+                color: Color(0xFF45AA4A),
+                fontFamily: 'Paperlogy',
+                fontSize: 20),
+          ),
           keyboardType: TextInputType.emailAddress,
           inputFormatters: [EnglishOnly()],
           onChanged: (text) {
             loginAddress.email = text;
           },
         ),
+        SizedBox(
+          height: 10,
+        ),
         TextFormField(
           // controller: _passwordController,
           obscureText: true,
           decoration: InputDecoration(
               labelText: 'PASSWORD',
-              labelStyle: TextStyle(color: Color(0xFF45AA4A))),
+              labelStyle: TextStyle(
+                  color: Color(0xFF45AA4A),
+                  fontFamily: 'Paperlogy',
+                  fontSize: 20)),
           onChanged: (text) {
             loginAddress.password = text;
           },
@@ -102,9 +113,9 @@ class LogInBox extends StatelessWidget {
       {required String title,
       required String content,
       VoidCallback? onDialogClose}) {
-    showDialog(
+    showCupertinoDialog(
       context: context,
-      builder: (context) => AlertDialog(
+      builder: (context) => CupertinoAlertDialog(
         title: Text(title),
         content: Text(content),
         actions: [

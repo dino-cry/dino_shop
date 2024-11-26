@@ -49,7 +49,10 @@ class ProductInfoView extends StatelessWidget {
         Container(
           width: double.infinity,
           padding: EdgeInsets.all(25),
-          child: Text(item.contents),
+          child: Text(
+            item.contents,
+            style: TextStyle(fontSize: 17.5),
+          ),
         ),
         SizedBox(height: 30),
       ],
