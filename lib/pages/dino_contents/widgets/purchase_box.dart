@@ -1,6 +1,7 @@
 import 'package:dino_shop/constant.dart';
 import 'package:dino_shop/model/cart.dart';
 import 'package:dino_shop/model/product.dart';
+import 'package:dino_shop/pages/dino_cart_list/dino_cart_list_page.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -62,14 +63,7 @@ class _PurchaseBoxState extends State<PurchaseBox> {
                 IconButton(
                   onPressed: () {
                     // 팝업 출력
-                    PurchaseConfirmationDialog(context);
-
-                    // // 카트에 아이템 담기
-                    // Cart userCart = Cart();
-                    // userCart.addItem(widget.item, quantity);
-
-                    // // 상품 갯수 초기화
-                    // clearQuantity();
+                    if (quantity > 0) PurchaseConfirmationDialog(context);
                   },
                   icon: Container(
                     width: 40,
@@ -93,7 +87,7 @@ class _PurchaseBoxState extends State<PurchaseBox> {
       builder: (context) {
         return CupertinoAlertDialog(
           title: Text("구매 확인"),
-          content: Text("${widget.item.name}을 ${quantity}개 구매하시겠습니까??"),
+          content: Text("${widget.item.name} ${quantity}개를 장바구니에 담으시겠습니까?"),
           actions: [
             CupertinoDialogAction(
               child: Text("취소"),
@@ -107,6 +101,14 @@ class _PurchaseBoxState extends State<PurchaseBox> {
               isDefaultAction: true,
               onPressed: () {
                 Navigator.of(context).pop();
+
+                // 카트에 아이템 담기
+                Cart userCart = Cart();
+                userCart.addItem(widget.item, quantity);
+
+                // 상품 갯수 초기화
+                clearQuantity();
+
                 PurchaseSuccessDialog(context);
               },
             ),
@@ -122,13 +124,26 @@ class _PurchaseBoxState extends State<PurchaseBox> {
       builder: (context) {
         return CupertinoAlertDialog(
           title: Text("구매 완료"),
-          content: Text("선택한 상품이 구매되었습니다."),
+          content: Text("선택한 상품이 장바구니에 담겼습니다."),
           actions: [
             CupertinoDialogAction(
-              child: Text("확인"),
+              child: Text("닫기"),
               isDefaultAction: true,
               onPressed: () {
                 Navigator.of(context).pop();
+              },
+            ),
+            CupertinoDialogAction(
+              child: Text("장바구니 보러가기"),
+              isDefaultAction: true,
+              onPressed: () {
+                Navigator.of(context).pop();
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) {
+                    return DinoCartListPage();
+                  }),
+                );
               },
             ),
           ],

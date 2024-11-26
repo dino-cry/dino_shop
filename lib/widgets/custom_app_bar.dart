@@ -31,8 +31,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
             Navigator.push(
               context,
               MaterialPageRoute(builder: (context) {
-                Cart userCart = Cart();
-                return DinoCartListPage(userCart);
+                return DinoCartListPage();
               }),
             );
           },
