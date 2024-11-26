@@ -1,5 +1,6 @@
 import 'package:dino_shop/constant.dart';
 import 'package:dino_shop/model/cart.dart';
+import 'package:dino_shop/pages/dino_list/dino_list_page.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -47,7 +48,9 @@ class _CartSummaryBarState extends State<CartSummaryBar> {
                   elevation: WidgetStatePropertyAll(2),
                   shadowColor: WidgetStatePropertyAll(Colors.green)),
               onPressed: () {
-                // 구매하기 함수
+                if (widget.userCart.totalPrice > 0)
+                  PurchaseConfirmationDialog(context);
+// 구매하기 함수
               },
               child: Text(
                 "구매하기",
@@ -110,6 +113,11 @@ class _CartSummaryBarState extends State<CartSummaryBar> {
                 widget.userCart.cartItems.clear();
 
                 Navigator.of(context).pop();
+                Navigator.push(context, MaterialPageRoute(
+                  builder: (context) {
+                    return DinoListPage();
+                  },
+                ));
               },
             ),
           ],
