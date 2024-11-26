@@ -7,6 +7,8 @@ import 'package:dino_shop/widgets/custom_app_bar.dart';
 import 'package:flutter/material.dart';
 
 class DinoCartListPage extends StatefulWidget {
+  static String routeName = "/dinoCartList";
+
   @override
   State<DinoCartListPage> createState() => _DinoCartListPageState();
 }
