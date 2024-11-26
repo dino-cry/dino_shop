@@ -9,9 +9,9 @@ class ProductInfoView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // 더미텍스트. 디자인 작업 후 삭제.
+    // 더미텍스트. 디자인 작업 후 삭제. -> 수정완료
     item.contents =
-        "dsdfs\nsgahjgsfdlkjhdgh;agsh\nasdgasdggggggggg\nasgd\ngsadgsdagasdd\nd\nd\nd\ngsaddddddwteeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeedddd";
+        "상품명 : ${item.name}\n상품설명 : ${item.contents}구매금액 : ${item.price}원";
 
     return ListView(
       children: [
@@ -45,9 +45,10 @@ class ProductInfoView extends StatelessWidget {
               child:
                   Text('상품정보', style: TextStyle(fontWeight: FontWeight.bold))),
         ),
+        ClipRRect(child: Image.asset(item.image[0], width: 430)),
         Container(
           width: double.infinity,
-          padding: EdgeInsets.symmetric(horizontal: 25),
+          padding: EdgeInsets.all(25),
           child: Text(item.contents),
         ),
         SizedBox(height: 30),
