@@ -57,9 +57,9 @@ class _DinoListPageState extends State<DinoListPage> {
       ),
       itemCount: productList.length,
       itemBuilder: (BuildContext context, int index) {
-        final product = productList[index]; // 현재 항목 데이터
+        final item = productList[index]; // 현재 항목 데이터
         return ProductCard(
-          product: product,
+          item: item,
           isFavorite: screenStars[index],
           onFavoritePressed: () {
             setState(() {
