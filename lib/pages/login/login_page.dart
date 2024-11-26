@@ -32,18 +32,26 @@ class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Padding(
-        padding: const EdgeInsets.all(60),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
+      resizeToAvoidBottomInset: true, // 키보드 올라올 때 화면 자동 조정
+      body: GestureDetector(
+        behavior: HitTestBehavior.opaque, // 빈 공간 클릭도 감지
+        onTap: () {
+          FocusScope.of(context).unfocus(); // 화면 클릭 시 키보드 닫기
+        },
+        child: ListView(
+          padding: const EdgeInsets.all(60), // 리스트뷰의 여백
           children: [
-            Image.asset('assets/images/application/logo.png'),
-            const SizedBox(
-              height: 30,
+            // 로고 이미지
+            Image.asset(
+              'assets/images/application/logo.png',
+              height: 150, // 로고 크기
             ),
+            const SizedBox(height: 30), // 로고와 로그인 박스 간 간격
+            // 로그인 박스
             LogInBox(onLoginSuccess: () {
-              Navigator.push(context,
-              MaterialPageRoute(builder: (context) => DinoListPage()),
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => DinoListPage()),
               );
             }),
           ],
@@ -52,3 +60,4 @@ class _LoginPageState extends State<LoginPage> {
     );
   }
 }
+
