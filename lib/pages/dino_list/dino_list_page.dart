@@ -2,8 +2,6 @@ import 'package:dino_shop/constant.dart';
 import 'package:dino_shop/model/product.dart';
 import 'package:dino_shop/pages/dino_list/widgets/product_card.dart';
 import 'package:dino_shop/pages/dino_register/dino_register_page.dart';
-import 'package:dino_shop/pages/login/login_page.dart';
-import 'package:dino_shop/theme.dart';
 import 'package:dino_shop/widgets/custom_app_bar.dart';
 import 'package:flutter/material.dart';
 
@@ -57,7 +55,11 @@ class _DinoListPageState extends State<DinoListPage> {
   }
 
   Widget NoItemsMessage() {
-    return Container(child: Center(child: Text(NO_ITEMS_MESSAGE)));
+    return Container(
+      child: Center(
+        child: Text(NO_ITEMS_MESSAGE),
+      ),
+    );
   }
 
   GridView GridViewProductList() {
