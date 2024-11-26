@@ -1,9 +1,7 @@
 import 'package:dino_shop/constant.dart';
 import 'package:dino_shop/model/product.dart';
-import 'package:dino_shop/pages/dino_cart_list/dino_cart_list_page.dart';
 import 'package:dino_shop/pages/dino_contents/widgets/product_info_view.dart';
 import 'package:dino_shop/pages/dino_contents/widgets/purchase_box.dart';
-import 'package:dino_shop/theme.dart';
 import 'package:dino_shop/widgets/custom_app_bar.dart';
 import 'package:flutter/material.dart';
 

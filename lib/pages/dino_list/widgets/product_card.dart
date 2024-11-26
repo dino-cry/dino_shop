@@ -22,7 +22,7 @@ class _ProductCardState extends State<ProductCard> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 15),
+      padding: EdgeInsets.symmetric(vertical: 15),
       child: GestureDetector(
         onTap: () {
           Navigator.push(
@@ -38,12 +38,10 @@ class _ProductCardState extends State<ProductCard> {
             // 상품 이미지 & 아이콘
             ProductImage(),
 
-            const SizedBox(height: 10),
+            SizedBox(height: 10),
 
             // 상품 이름 & 설명
             ProductInfo(),
-
-            // const SizedBox(height: 5),
 
             // 상품 가격 등 정보
             ProductExtraInfo(),
@@ -58,19 +56,19 @@ class _ProductCardState extends State<ProductCard> {
       child: Row(
         children: [
           Text(
-            MONEY_FORMAT.format(widget.item.price),
-            style: const TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
+            widget.item.getPrice(),
+            style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
           ),
-          const SizedBox(width: 5),
+          SizedBox(width: 5),
           Icon(
             Icons.star_rate_rounded,
             size: 15,
-            color: const Color(0xFFFFD700),
+            color: Color(0xFFFFD700),
           ),
-          const SizedBox(width: 5),
+          SizedBox(width: 5),
           Text(
             '4.5 (5)',
-            style: const TextStyle(fontSize: 13, color: Colors.grey),
+            style: TextStyle(fontSize: 13, color: Colors.grey),
           ),
         ],
       ),
@@ -84,11 +82,15 @@ class _ProductCardState extends State<ProductCard> {
         // 상품 이름
         Text(
           widget.item.name,
-          style: const TextStyle(fontSize: 17, fontWeight: FontWeight.bold),
-        ), // 상품 설명
+          style: TextStyle(fontSize: 17, fontWeight: FontWeight.bold),
+        ),
+        
+        // 상품 설명
         Text(
-          widget.item.contents,
-          style: const TextStyle(fontSize: 15, color: Colors.grey),
+          "${widget.item.contents}${widget.item.contents}",
+          style: TextStyle(fontSize: 15, color: Colors.grey),
+          overflow: TextOverflow.ellipsis,
+          maxLines: 1,
         ),
       ],
     );

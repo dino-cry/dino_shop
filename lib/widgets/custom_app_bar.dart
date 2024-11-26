@@ -28,12 +28,18 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
         ),
         IconButton(
           onPressed: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) {
-                return DinoCartListPage();
-              }),
-            );
+            if (ModalRoute.of(context)?.settings.name !=
+                DinoCartListPage.routeName) {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) {
+                    return DinoCartListPage();
+                  },
+                  settings: RouteSettings(name: DinoCartListPage.routeName),
+                ),
+              );
+            }
           },
           icon: Icon(Icons.shopping_cart),
         ),
