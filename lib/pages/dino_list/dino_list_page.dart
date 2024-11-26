@@ -36,8 +36,9 @@ class _DinoListPageState extends State<DinoListPage> {
     return Scaffold(
       appBar: CustomAppBar(title: APP_TITLE),
       body: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 30),
-          child: GridViewProductList()),
+        padding: const EdgeInsets.symmetric(horizontal: 30),
+        child: productList.isEmpty ? NoItemsMessage() : GridViewProductList(),
+      ),
       floatingActionButton: FloatingActionButton.large(
         onPressed: () {
           // 버튼을 눌렀을 때 수행할 동작 추가 가능
@@ -45,6 +46,10 @@ class _DinoListPageState extends State<DinoListPage> {
         child: const Icon(Icons.add),
       ),
     );
+  }
+
+  Widget NoItemsMessage() {
+    return Container(child: Center(child: Text("상품이 없습니다.")));
   }
 
   GridView GridViewProductList() {
