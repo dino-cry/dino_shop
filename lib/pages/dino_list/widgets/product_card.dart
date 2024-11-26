@@ -1,12 +1,13 @@
 import 'package:dino_shop/constant.dart';
 import 'package:dino_shop/model/product.dart';
+import 'package:dino_shop/pages/dino_contents/dino_contents_page.dart';
 import 'package:flutter/material.dart';
 
 class ProductCard extends StatefulWidget {
-  Product product;
+  Product item;
 
   ProductCard({
-    required this.product,
+    required this.item,
     required bool isFavorite,
     required Null Function() onFavoritePressed,
   });
@@ -20,22 +21,35 @@ class _ProductCardState extends State<ProductCard> {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        // 상품 이미지 & 아이콘
-        ProductImage(),
-    
-        const SizedBox(height: 10),
-    
-        // 상품 이름 & 설명
-        ProductInfo(),
-    
-        // const SizedBox(height: 5),
-    
-        // 상품 가격 등 정보
-        ProductExtraInfo(),
-      ],
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 15),
+      child: GestureDetector(
+        onTap: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) {
+              return DinoContentsPage(widget.item);
+            }),
+          );
+        },
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            // 상품 이미지 & 아이콘
+            ProductImage(),
+
+            const SizedBox(height: 10),
+
+            // 상품 이름 & 설명
+            ProductInfo(),
+
+            // const SizedBox(height: 5),
+
+            // 상품 가격 등 정보
+            ProductExtraInfo(),
+          ],
+        ),
+      ),
     );
   }
 
@@ -44,7 +58,7 @@ class _ProductCardState extends State<ProductCard> {
       child: Row(
         children: [
           Text(
-            MONEY_FORMAT.format(widget.product.price),
+            MONEY_FORMAT.format(widget.item.price),
             style: const TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
           ),
           const SizedBox(width: 5),
@@ -69,11 +83,11 @@ class _ProductCardState extends State<ProductCard> {
       children: [
         // 상품 이름
         Text(
-          widget.product.name,
+          widget.item.name,
           style: const TextStyle(fontSize: 17, fontWeight: FontWeight.bold),
         ), // 상품 설명
         Text(
-          widget.product.contents,
+          widget.item.contents,
           style: const TextStyle(fontSize: 15, color: Colors.grey),
         ),
       ],
@@ -90,7 +104,7 @@ class _ProductCardState extends State<ProductCard> {
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(15),
             image: DecorationImage(
-              image: AssetImage(widget.product.image[0]),
+              image: AssetImage(widget.item.image[0]),
               fit: BoxFit.cover,
             ),
           ),
@@ -98,8 +112,7 @@ class _ProductCardState extends State<ProductCard> {
 
         // 좋아요 버튼
         Positioned(
-          top: 10,
-          right: 10,
+          right: 0,
           child: IconButton(
             onPressed: () {
               setState(() {
@@ -107,9 +120,9 @@ class _ProductCardState extends State<ProductCard> {
               });
             },
             icon: Icon(
-              Icons.star_rate_rounded,
+              Icons.favorite,
               size: 25,
-              color: isFavorite ? const Color(0xFFFFD700) : Colors.grey,
+              color: isFavorite ? Colors.red : Colors.grey,
             ),
           ),
         ),

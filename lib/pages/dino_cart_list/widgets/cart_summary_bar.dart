@@ -1,5 +1,6 @@
 import 'package:dino_shop/constant.dart';
 import 'package:dino_shop/model/cart.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class CartSummaryBar extends StatefulWidget {
@@ -22,7 +23,10 @@ class _CartSummaryBarState extends State<CartSummaryBar> {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Text("${MONEY_FORMAT.format(widget.userCart.totalPrice)}원"),
+            Text(
+              "총 ${MONEY_FORMAT.format(widget.userCart.totalPrice)}원",
+              style: TextStyle(fontSize: 28, color: Colors.white),
+            ),
             OutlinedButton(
               onPressed: () {
                 // 구매하기 함수
@@ -32,6 +36,58 @@ class _CartSummaryBarState extends State<CartSummaryBar> {
           ],
         ),
       ),
+    );
+  }
+  Future<dynamic> PurchaseConfirmationDialog(BuildContext context) {
+    return showCupertinoDialog(
+      context: context,
+      builder: (context) {
+        return CupertinoAlertDialog(
+          title: Text("구매 확인"),
+          content: Text("선택한 상품들(총 ${widget.userCart.totalPrice}원)을 구매하시겠습니까??"),
+          actions: [
+            CupertinoDialogAction(
+              child: Text("취소"),
+              isDestructiveAction: true,
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+            ),
+            CupertinoDialogAction(
+              child: Text("확인"),
+              isDefaultAction: true,
+              onPressed: () {
+                Navigator.of(context).pop();
+                PurchaseSuccessDialog(context);
+              },
+            ),
+          ],
+        );
+      },
+    );
+  }
+
+  Future<dynamic> PurchaseSuccessDialog(BuildContext context) {
+    return showCupertinoDialog(
+      context: context,
+      builder: (context) {
+        return CupertinoAlertDialog(
+          title: Text("구매 완료"),
+          content: Text("선택한 상품이 구매되었습니다."),
+          actions: [
+            CupertinoDialogAction(
+              child: Text("확인"),
+              isDefaultAction: true,
+              onPressed: () {
+                // 카트 초기화
+                widget.userCart.cartItems.clear();
+
+                Navigator.of(context).pop();
+              },
+            ),
+          ],
+        );
+      },
     );
   }
 }
