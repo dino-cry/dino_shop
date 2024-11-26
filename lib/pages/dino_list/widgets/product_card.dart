@@ -20,22 +20,25 @@ class _ProductCardState extends State<ProductCard> {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        // 상품 이미지 & 아이콘
-        ProductImage(),
-    
-        const SizedBox(height: 10),
-    
-        // 상품 이름 & 설명
-        ProductInfo(),
-    
-        // const SizedBox(height: 5),
-    
-        // 상품 가격 등 정보
-        ProductExtraInfo(),
-      ],
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 15),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          // 상품 이미지 & 아이콘
+          ProductImage(),
+      
+          const SizedBox(height: 10),
+      
+          // 상품 이름 & 설명
+          ProductInfo(),
+      
+          // const SizedBox(height: 5),
+      
+          // 상품 가격 등 정보
+          ProductExtraInfo(),
+        ],
+      ),
     );
   }
 
@@ -98,8 +101,7 @@ class _ProductCardState extends State<ProductCard> {
 
         // 좋아요 버튼
         Positioned(
-          top: 10,
-          right: 10,
+          right: 0,
           child: IconButton(
             onPressed: () {
               setState(() {
@@ -107,9 +109,9 @@ class _ProductCardState extends State<ProductCard> {
               });
             },
             icon: Icon(
-              Icons.star_rate_rounded,
+              Icons.favorite,
               size: 25,
-              color: isFavorite ? const Color(0xFFFFD700) : Colors.grey,
+              color: isFavorite ? Colors.red : Colors.grey,
             ),
           ),
         ),

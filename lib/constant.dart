@@ -1,5 +1,5 @@
 import 'package:intl/intl.dart';
 
-class Constant {}
+final APP_TITLE = "Dinoshop";
 
 final MONEY_FORMAT = NumberFormat('###,###,###,###');
