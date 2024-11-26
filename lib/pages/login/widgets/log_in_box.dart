@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 class LogInBox extends StatelessWidget {
   // final TextEditingController _emailController = TextEditingController();
   // final TextEditingController _passwordController = TextEditingController();
-  
+
   var loginAddress = Manager(email: "email", password: "password");
 
   final VoidCallback onLoginSuccess;
@@ -70,7 +70,9 @@ class LogInBox extends StatelessWidget {
       children: [
         TextFormField(
           // controller: _emailController,
-          decoration: InputDecoration(labelText: 'EMAIL'),
+          decoration: InputDecoration(
+              labelText: 'EMAIL',
+              labelStyle: TextStyle(color: Color(0xFF45AA4A))),
           keyboardType: TextInputType.emailAddress,
           inputFormatters: [EnglishOnly()],
           onChanged: (text) {
@@ -80,7 +82,9 @@ class LogInBox extends StatelessWidget {
         TextFormField(
           // controller: _passwordController,
           obscureText: true,
-          decoration: InputDecoration(labelText: 'PASSWORD'),
+          decoration: InputDecoration(
+              labelText: 'PASSWORD',
+              labelStyle: TextStyle(color: Color(0xFF45AA4A))),
           onChanged: (text) {
             loginAddress.password = text;
           },

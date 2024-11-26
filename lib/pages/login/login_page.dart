@@ -1,6 +1,5 @@
 import 'package:dino_shop/pages/dino_list/dino_list_page.dart';
 import 'package:dino_shop/pages/login/widgets/log_in_box.dart';
-import 'package:dino_shop/theme.dart';
 import 'package:flutter/material.dart';
 
 class LoginPage extends StatefulWidget {
@@ -27,8 +26,8 @@ class _LoginPageState extends State<LoginPage> {
             children: [
               // 로고 이미지
               Image.asset(
-                'assets/images/application/logo.png',
-                height: 150, // 로고 크기
+                'assets/images/application/newlogo.png',
+                height: 125, // 로고 크기
               ),
               SizedBox(height: 30), // 로고와 로그인 박스 간 간격
               // 로그인 박스
@@ -45,4 +44,3 @@ class _LoginPageState extends State<LoginPage> {
     );
   }
 }
-

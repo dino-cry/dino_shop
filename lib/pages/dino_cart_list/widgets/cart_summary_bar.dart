@@ -17,7 +17,7 @@ class _CartSummaryBarState extends State<CartSummaryBar> {
     return Container(
       width: double.infinity,
       height: 100,
-      color: Colors.green,
+      color: Color(0xFF45AA4A),
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 30),
         child: Row(
@@ -38,13 +38,15 @@ class _CartSummaryBarState extends State<CartSummaryBar> {
       ),
     );
   }
+
   Future<dynamic> PurchaseConfirmationDialog(BuildContext context) {
     return showCupertinoDialog(
       context: context,
       builder: (context) {
         return CupertinoAlertDialog(
           title: Text("구매 확인"),
-          content: Text("선택한 상품들(총 ${widget.userCart.totalPrice}원)을 구매하시겠습니까??"),
+          content:
+              Text("선택한 상품들(총 ${widget.userCart.totalPrice}원)을 구매하시겠습니까??"),
           actions: [
             CupertinoDialogAction(
               child: Text("취소"),

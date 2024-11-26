@@ -81,12 +81,12 @@ flutter:
   fonts:
     - family: Paperlogy
       fonts:
-        - asset: fonts/Paperlogy-3Light.ttf
-        - asset: fonts/Paperlogy-4Regular.ttf
-        - asset: fonts/Paperlogy-5Medium.ttf
-        - asset: fonts/Paperlogy-6SemiBold.ttf
-        - asset: fonts/Paperlogy-7Bold.ttf
-        - asset: fonts/Paperlogy-9Black.ttf
+        - asset: assets/fonts/Paperlogy-3Light.ttf
+        - asset: assets/fonts/Paperlogy-4Regular.ttf
+        - asset: assets/fonts/Paperlogy-5Medium.ttf
+        - asset: assets/fonts/Paperlogy-6SemiBold.ttf
+        - asset: assets/fonts/Paperlogy-7Bold.ttf
+        - asset: assets/fonts/Paperlogy-9Black.ttf
   #         style: italic
   #   - family: Trajan Pro
   #     fonts:

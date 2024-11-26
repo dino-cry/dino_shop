@@ -33,6 +33,9 @@ class _DinoCartListPageState extends State<DinoCartListPage> {
       appBar: CustomAppBar(title: "장바구니"),
       body: Column(
         children: [
+          Container(
+            height: 20,
+          ),
           // 장바구니 아이템 목록
           userCart.cartItems.isEmpty
               ? EmptyCartMessage()

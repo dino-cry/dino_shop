@@ -40,6 +40,16 @@ class _DinoListPageState extends State<DinoListPage> {
       appBar: CustomAppBar(title: APP_TITLE),
       body: Column(
         children: [
+          // Container(
+          //   height: 3,
+          //   decoration: BoxDecoration(
+          //     gradient: LinearGradient(
+          //       colors: [Color(0xFFA5E78F), Color(0xFFFAEA94)],
+          //       begin: Alignment.centerLeft,
+          //       end: Alignment.centerRight,
+          //     ),
+          //   ),
+          // ),
           Row(
             mainAxisAlignment: MainAxisAlignment.end,
             children: [
@@ -61,9 +71,6 @@ class _DinoListPageState extends State<DinoListPage> {
               ),
             ],
           ),
-          // 실선
-          Container(
-              width: 500, child: Divider(color: Colors.black, thickness: 2.0)),
           Expanded(
             // Expanded로 GridView를 감쌈
             child: Padding(
