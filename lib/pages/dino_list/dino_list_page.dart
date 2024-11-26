@@ -32,6 +32,7 @@ class _DinoListPageState extends State<DinoListPage> {
 
   @override
   Widget build(BuildContext context) {
+    // productList.removeRange(0, productList.length);
     return Scaffold(
       appBar: CustomAppBar(title: APP_TITLE),
       body: Padding(
