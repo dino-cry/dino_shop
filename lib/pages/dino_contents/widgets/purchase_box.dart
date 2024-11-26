@@ -138,11 +138,15 @@ class _PurchaseBoxState extends State<PurchaseBox> {
               isDefaultAction: true,
               onPressed: () {
                 Navigator.of(context).pop();
+
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) {
-                    return DinoCartListPage();
-                  }),
+                  MaterialPageRoute(
+                    builder: (context) {
+                      return DinoCartListPage();
+                    },
+                    settings: RouteSettings(name: DinoCartListPage.routeName),
+                  ),
                 );
               },
             ),

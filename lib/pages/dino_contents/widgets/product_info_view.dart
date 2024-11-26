@@ -50,6 +50,7 @@ class ProductInfoView extends StatelessWidget {
           padding: EdgeInsets.symmetric(horizontal: 25),
           child: Text(item.contents),
         ),
+        SizedBox(height: 30),
       ],
     );
   }
