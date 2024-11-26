@@ -1,6 +1,6 @@
 import 'package:intl/intl.dart';
 
-class Constant {}
+final APP_TITLE = "Dinoshop";
 
 final MONEY_FORMAT = NumberFormat('###,###,###,###');
 final String ONE_MORE_PRICE = '1원 이상 입력해주세요.';

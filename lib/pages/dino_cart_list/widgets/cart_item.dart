@@ -19,13 +19,29 @@ class _CartItemState extends State<CartItem> {
   Widget build(BuildContext context) {
     return Container(
       padding: EdgeInsets.symmetric(vertical: 10),
-      child: Row(
+      child: Stack(
         children: [
-          // 제품 이미지
-          ProductImage(),
+          Positioned(
+            // top: 5,
+            right: -7,
+            child: IconButton(
+              // padding: EdgeInsets.only(top: 20),
+              onPressed: () {
+                widget.removeCartItem(widget.item);
+              },
+              icon: Icon(Icons.cancel_outlined),
+            ),
+          ),
 
-          // 제품 이름, 갯수 등 정보
-          CartItemControl(context),
+          Row(
+            children: [
+              // 제품 이미지
+              ProductImage(),
+
+              // 제품 이름, 갯수 등 정보
+              CartItemControl(context),
+            ],
+          ),
         ],
       ),
     );
@@ -36,25 +52,14 @@ class _CartItemState extends State<CartItem> {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.end,
         children: [
-          Row(
-            children: [
-              Spacer(),
-              IconButton(
-                // padding: EdgeInsets.only(top: 20),
-                onPressed: () {
-                  widget.removeCartItem(widget.item);
-                },
-                icon: Icon(Icons.cancel_outlined),
-              ),
-            ],
-          ),
+          SizedBox(height: 10),
           Row(
             children: [
               Padding(
                 padding: const EdgeInsets.only(left: 15),
                 child: Text(
                   widget.item.name,
-                  style: Theme.of(context).textTheme.bodyMedium,
+                  style: Theme.of(context).textTheme.titleMedium,
                 ),
               ),
             ],

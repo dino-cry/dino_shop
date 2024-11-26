@@ -1,12 +1,8 @@
-import 'package:currency_text_input_formatter/currency_text_input_formatter.dart';
-import 'package:dino_shop/constant.dart';
 import 'package:dino_shop/pages/dino_register/dino_register_page.dart';
-import 'package:dino_shop/pages/dino_register/widget/product_regexp.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 
 class ProductPrice extends StatelessWidget {
-  void Function(String price) setPrice;
+  void Function(int price) setPrice;
   ProductPrice(this.setPrice);
 
   @override
@@ -22,7 +18,7 @@ class ProductPrice extends StatelessWidget {
         Row(
           children: [
             Expanded(
-              child: TextFormField(
+              child: TextField(
                 decoration: customInputDecoration(),
                 cursorHeight: 25,
                 cursorWidth: 1.5,
@@ -30,21 +26,8 @@ class ProductPrice extends StatelessWidget {
                 style: Theme.of(context).textTheme.bodyMedium,
                 keyboardType: TextInputType.numberWithOptions(),
                 textAlign: TextAlign.end,
-                inputFormatters: [
-                  // 숫자 외 다른 글자 필터링
-                  FilteringTextInputFormatter.digitsOnly,
-                  // 숫자 포맷(###,###)
-                  CurrencyTextInputFormatter(MONEY_FORMAT)
-                ],
                 onChanged: (text) => {
-                  if (text != '' && ProductRegexp.number.hasMatch(text))
-                    {setPrice(text)}
-                },
-                // 빈 값 validation
-                validator: (value) {
-                  if (value!.isEmpty) {
-                    return ONE_MORE_PRICE;
-                  }
+                  setPrice(int.parse(text)),
                 },
               ),
             ),
