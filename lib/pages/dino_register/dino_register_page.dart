@@ -1,8 +1,8 @@
 import 'package:dino_shop/model/product.dart';
-import 'package:dino_shop/pages/dino_register/widget/product_contents.dart';
-import 'package:dino_shop/pages/dino_register/widget/product_image.dart';
-import 'package:dino_shop/pages/dino_register/widget/product_name.dart';
-import 'package:dino_shop/pages/dino_register/widget/product_price.dart';
+import 'package:dino_shop/pages/dino_register/widgets/product_contents.dart';
+import 'package:dino_shop/pages/dino_register/widgets/product_image.dart';
+import 'package:dino_shop/pages/dino_register/widgets/product_name.dart';
+import 'package:dino_shop/pages/dino_register/widgets/product_price.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 
