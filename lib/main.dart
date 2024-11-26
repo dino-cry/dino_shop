@@ -1,6 +1,4 @@
-import 'package:dino_shop/model/cart.dart';
 import 'package:dino_shop/pages/dino_list/dino_list_page.dart';
-import 'package:dino_shop/pages/login/login_page.dart';
 import 'package:flutter/material.dart';
 
 void main() {

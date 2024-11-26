@@ -3,6 +3,7 @@ import 'package:dino_shop/pages/dino_register/widgets/product_contents.dart';
 import 'package:dino_shop/pages/dino_register/widgets/product_image.dart';
 import 'package:dino_shop/pages/dino_register/widgets/product_name.dart';
 import 'package:dino_shop/pages/dino_register/widgets/product_price.dart';
+import 'package:dino_shop/widgets/custom_app_bar.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
@@ -58,9 +59,7 @@ class _DinoRegisterPageState extends State<DinoRegisterPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('공룡은 크아앙'),
-      ),
+      appBar: CustomAppBar(title: "상품 등록"),
       body: Padding(
         padding: const EdgeInsets.all(30),
         child: Form(

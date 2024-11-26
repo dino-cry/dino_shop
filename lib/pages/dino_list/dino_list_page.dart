@@ -1,6 +1,7 @@
 import 'package:dino_shop/constant.dart';
 import 'package:dino_shop/model/product.dart';
 import 'package:dino_shop/pages/dino_list/widgets/product_card.dart';
+import 'package:dino_shop/pages/dino_register/dino_register_page.dart';
 import 'package:dino_shop/pages/login/login_page.dart';
 import 'package:dino_shop/theme.dart';
 import 'package:dino_shop/widgets/custom_app_bar.dart';
@@ -39,9 +40,16 @@ class _DinoListPageState extends State<DinoListPage> {
         padding: const EdgeInsets.symmetric(horizontal: 30),
         child: productList.isEmpty ? NoItemsMessage() : GridViewProductList(),
       ),
-      floatingActionButton: FloatingActionButton.large(
+
+      // 상품 추가 플로팅 버튼
+      floatingActionButton: FloatingActionButton(
         onPressed: () {
-          // 버튼을 눌렀을 때 수행할 동작 추가 가능
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) {
+              return DinoRegisterPage();
+            }),
+          );
         },
         child: const Icon(Icons.add),
       ),
@@ -49,7 +57,7 @@ class _DinoListPageState extends State<DinoListPage> {
   }
 
   Widget NoItemsMessage() {
-    return Container(child: Center(child: Text("상품이 없습니다.")));
+    return Container(child: Center(child: Text(NO_ITEMS_MESSAGE)));
   }
 
   GridView GridViewProductList() {
