@@ -130,8 +130,6 @@ class _DinoRegisterPageState extends State<DinoRegisterPage> {
         },
         child: Text('등록하기'),
         style: ButtonStyle(
-          backgroundColor:
-              WidgetStatePropertyAll(Color.fromARGB(255, 165, 231, 143)),
           shape: WidgetStatePropertyAll(
             RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(12),
