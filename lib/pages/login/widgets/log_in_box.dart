@@ -1,42 +1,22 @@
+import 'package:dino_shop/model/manager.dart';
 import 'package:dino_shop/pages/login/widgets/english_only.dart';
 import 'package:flutter/material.dart';
 
-/// 관리자 계정 정보를 관리하는 클래스
-class Manager {
-  // 관리자 이메일과 비밀번호
-  final String email;
-  final String password;
-
-  // 생성자를 통해 관리자 계정을 초기화
-  Manager({
-    required this.email, //필수 입력값 required, null값 문제 방지
-    required this.password,
-  });
-
-  /// 관리자 계정인지 확인
-  bool isManager(String inputEmail, String inputPassword) {
-    return inputEmail == email && inputPassword == password;
-  }
-}
-
 class LogInBox extends StatelessWidget {
-  final _emailController = TextEditingController();
-  final _passwordController = TextEditingController();
+  // final TextEditingController _emailController = TextEditingController();
+  // final TextEditingController _passwordController = TextEditingController();
+  var email = "";
+  var password = "";
 
   final VoidCallback onLoginSuccess;
 
   LogInBox({required this.onLoginSuccess});
 
-  // 관리자 계정을 정의
-  final Manager manager = Manager(
-    email: "admin@gmail.com",
-    password: "1234",
-  );
-
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(           //키보드 사라지게 만들고 싶은데...안되네여?
-      behavior: HitTestBehavior.opaque, //안되서 
+    return GestureDetector(
+      //키보드 사라지게 만들고 싶은데...안되네여?
+      behavior: HitTestBehavior.opaque, //안되서
       onTap: () {
         // 화면 클릭 시 키보드 닫기
         FocusScope.of(context).unfocus();
@@ -51,26 +31,19 @@ class LogInBox extends StatelessWidget {
           // 로그인 버튼
           ElevatedButton(
             onPressed: () {
-              final email = _emailController.text;
-              final password = _passwordController.text;
+              // var email = _emailController.text;
+              // var password = _passwordController.text;
+
+              print(email);
+              print(password);
 
               // 관리자 계정 확인
-              if (manager.isManager(email, password)) {
+              if (Manager(email: email, password: password) == managerAddress) {
                 // 관리자 계정 로그인 성공 시
                 _showCustomDialog(
                   context,
                   title: "관리자님!",
                   content: "오늘 하루도 열심히.",
-                  onDialogClose: onLoginSuccess, // 팝업 닫힌 후 다음 페이지 이동
-                );
-              }
-              // 일반 계정 확인
-              else if (_validateCredentials(email, password)) {
-                // 일반 계정 로그인 성공 시
-                _showCustomDialog(
-                  context,
-                  title: "환영합니다!",
-                  content: "로그인이 성공적으로 완료되었습니다.",
                   onDialogClose: onLoginSuccess, // 팝업 닫힌 후 다음 페이지 이동
                 );
               } else {
@@ -93,14 +66,17 @@ class LogInBox extends StatelessWidget {
     return Column(
       children: [
         TextFormField(
-            controller: _emailController,
-            decoration: InputDecoration(labelText: 'EMAIL'),
-            keyboardType: TextInputType.emailAddress,
-            inputFormatters: [EnglishOnly()]),
+          // controller: _emailController,
+          decoration: InputDecoration(labelText: 'EMAIL'),
+          keyboardType: TextInputType.emailAddress,
+          inputFormatters: [EnglishOnly()],
+          onChanged: (text) => {email = text},
+        ),
         TextFormField(
-          controller: _passwordController,
+          // controller: _passwordController,
           obscureText: true,
           decoration: InputDecoration(labelText: 'PASSWORD'),
+          onChanged: (text) => {password = text},
         ),
       ],
     );
