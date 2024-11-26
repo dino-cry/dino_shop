@@ -1,3 +1,5 @@
+import 'package:dino_shop/constant.dart';
+
 class Product {
   String name;
   int price;
@@ -10,6 +12,10 @@ class Product {
     required this.contents,
     required this.image,
   });
+
+  String getPrice(){
+    return price > 0 ? MONEY_FORMAT.format(price) : "무료";
+  }
 }
 
 List<Product> productList = [

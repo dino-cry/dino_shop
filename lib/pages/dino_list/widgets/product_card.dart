@@ -58,7 +58,7 @@ class _ProductCardState extends State<ProductCard> {
       child: Row(
         children: [
           Text(
-            MONEY_FORMAT.format(widget.item.price),
+            widget.item.getPrice(),
             style: const TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
           ),
           const SizedBox(width: 5),

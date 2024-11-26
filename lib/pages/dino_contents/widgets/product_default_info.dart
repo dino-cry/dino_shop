@@ -28,7 +28,7 @@ class ProductDefaultInfo extends StatelessWidget {
               ),
               const Spacer(),
               Text(
-                '${MONEY_FORMAT.format(item.price)}원',
+                '${item.getPrice()}원',
                 style: Theme.of(context).textTheme.bodySmall,
               )
             ],
