@@ -17,6 +17,8 @@ class _DinoRegisterPageState extends State<DinoRegisterPage> {
   late String contents;
   List<XFile?> images = []; // 보여질 이미지들
 
+  final _formKey = GlobalKey<FormState>();
+
   /// 상품 이름 지정하는 메서드
   void setName(String newName) {
     setState(() {
@@ -25,9 +27,9 @@ class _DinoRegisterPageState extends State<DinoRegisterPage> {
   }
 
   /// 상품 가격 지정하는 메서드
-  void setPrice(int newPrice) {
+  void setPrice(String newPrice) {
     setState(() {
-      price = newPrice;
+      price = int.parse(newPrice);
     });
   }
 
@@ -59,25 +61,33 @@ class _DinoRegisterPageState extends State<DinoRegisterPage> {
         title: Text('공룡은 크아앙'),
       ),
       body: Padding(
-        padding: const EdgeInsets.all(20),
-        child: CustomScrollView(
-          slivers: [
-            SliverToBoxAdapter(
-              child: ProductImage(images, selectImage, deleteImage),
-            ),
-            SliverList(
-              delegate: SliverChildListDelegate([
-                SizedBox(height: 8),
-                ProductName(setName),
-                SizedBox(height: 8),
-                ProductPrice(setPrice),
-                SizedBox(height: 8),
-                ProductContents(setContents),
-                SizedBox(height: 15),
-                register(),
-              ]),
-            ),
-          ],
+        padding: const EdgeInsets.all(30),
+        child: Form(
+          key: _formKey,
+          child: CustomScrollView(
+            slivers: [
+              SliverToBoxAdapter(
+                // 상품 이미지
+                child: ProductImage(images, selectImage, deleteImage),
+              ),
+              SliverList(
+                delegate: SliverChildListDelegate([
+                  SizedBox(height: 8),
+                  // 상품 이름
+                  ProductName(setName),
+                  SizedBox(height: 8),
+                  // 상품 가격
+                  ProductPrice(setPrice),
+                  SizedBox(height: 8),
+                  // 상품 설명
+                  ProductContents(setContents),
+                  SizedBox(height: 15),
+                  // 등록하기 버튼
+                  register(),
+                ]),
+              ),
+            ],
+          ),
         ),
       ),
     );
@@ -90,14 +100,18 @@ class _DinoRegisterPageState extends State<DinoRegisterPage> {
       height: 50,
       child: ElevatedButton(
         onPressed: () {
-          var imagePath =
-              List.generate(images.length, (int i) => images[i]!.path);
-          Product(
-            name: name,
-            price: price,
-            contents: contents,
-            image: imagePath,
-          );
+          if (_formKey.currentState!.validate()) {
+            var imagePath =
+                List.generate(images.length, (int i) => images[i]!.path);
+            var product = Product(
+                name: name, price: price, contents: contents, image: imagePath);
+
+            // 상품 리스트에 등록
+            productList.add(product);
+
+            // 뒤로가기(상품 리스트 페이지로)
+            Navigator.pop(context);
+          }
         },
         child: Text('등록하기'),
         style: ButtonStyle(

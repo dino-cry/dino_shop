@@ -1,5 +1,8 @@
+import 'package:dino_shop/constant.dart';
 import 'package:dino_shop/pages/dino_register/dino_register_page.dart';
+import 'package:dino_shop/pages/dino_register/widget/product_regexp.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 class ProductContents extends StatelessWidget {
   void Function(String contents) setContents;
@@ -15,7 +18,7 @@ class ProductContents extends StatelessWidget {
           style: Theme.of(context).textTheme.bodyMedium,
         ),
         SizedBox(height: 8),
-        TextField(
+        TextFormField(
           decoration: customInputDecoration(),
           maxLines: 12,
           cursorHeight: 25,
@@ -23,6 +26,14 @@ class ProductContents extends StatelessWidget {
           cursorColor: Colors.black,
           style: Theme.of(context).textTheme.bodyMedium,
           onChanged: (text) => {setContents(text)},
+          validator: (value) {
+            if (value!.isEmpty) {
+              return ONE_MORE_LETTER;
+            }
+            if (!ProductRegexp.str.hasMatch(value)) {
+              return INVALID_LETTER;
+            }
+          },
         )
       ],
     );
