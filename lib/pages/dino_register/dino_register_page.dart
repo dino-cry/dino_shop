@@ -3,6 +3,7 @@ import 'package:dino_shop/pages/dino_register/widgets/product_contents.dart';
 import 'package:dino_shop/pages/dino_register/widgets/product_image.dart';
 import 'package:dino_shop/pages/dino_register/widgets/product_name.dart';
 import 'package:dino_shop/pages/dino_register/widgets/product_price.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 
@@ -99,8 +100,8 @@ class _DinoRegisterPageState extends State<DinoRegisterPage> {
       width: double.infinity,
       height: 50,
       child: ElevatedButton(
-        onPressed: () {
-          if (_formKey.currentState!.validate()) {
+        onPressed: () async {
+          if (images.length >= 1 && _formKey.currentState!.validate()) {
             var imagePath =
                 List.generate(images.length, (int i) => images[i]!.path);
             var product = Product(
@@ -109,8 +110,14 @@ class _DinoRegisterPageState extends State<DinoRegisterPage> {
             // 상품 리스트에 등록
             productList.add(product);
 
+            // 등록 확인
+            await confirmDialog(context, '등록이 완료되었습니다.');
+
             // 뒤로가기(상품 리스트 페이지로)
             Navigator.pop(context);
+          } else if (images.length <= 0) {
+            // 이미지 한 개 이상 선택이 안되어있으면
+            await confirmDialog(context, '이미지를 한 개 이상 선택하세요.');
           }
         },
         child: Text('등록하기'),
@@ -124,6 +131,25 @@ class _DinoRegisterPageState extends State<DinoRegisterPage> {
           ),
         ),
       ),
+    );
+  }
+
+  /// 확인 Dialog
+  Future<dynamic> confirmDialog(BuildContext context, String text) {
+    return showCupertinoDialog(
+      context: context,
+      builder: (context) {
+        return CupertinoAlertDialog(
+          title: Text(text),
+          actions: [
+            CupertinoDialogAction(
+              isDefaultAction: true,
+              child: Text('확인'),
+              onPressed: () => Navigator.pop(context),
+            )
+          ],
+        );
+      },
     );
   }
 }
