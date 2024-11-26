@@ -1,7 +1,7 @@
 import 'package:currency_text_input_formatter/currency_text_input_formatter.dart';
 import 'package:dino_shop/constant.dart';
 import 'package:dino_shop/pages/dino_register/dino_register_page.dart';
-import 'package:dino_shop/pages/dino_register/widget/product_regexp.dart';
+import 'package:dino_shop/pages/dino_register/widgets/product_regexp.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
