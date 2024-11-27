@@ -33,6 +33,4 @@
     <img src='assets/images/application/product-cart.png' width=150 height=330>
 </p>
 
-## 🎥 사용법(앱 실행 예시)
-
-- 유튜브에 올린 시연 영상 추가 예정
+## 🎥 [사용법(실행 영상)](https://youtu.be/Pqiyb1smI-k?si=-iMNprSEbfrHOd1Z)
