@@ -19,7 +19,7 @@ class ProductContents extends StatelessWidget {
         SizedBox(height: 8),
         TextFormField(
           decoration: customInputDecoration(),
-          maxLines: 12,
+          maxLines: 10,
           cursorHeight: 25,
           cursorWidth: 1.5,
           cursorColor: Colors.black,

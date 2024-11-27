@@ -24,7 +24,8 @@ class _CartItemsListState extends State<CartItemsList> {
         child: ListView(
           children: [
             for (Product item in widget.userCart.cartItems.keys)
-              CartItem(item, widget.userCart.cartItems[item]!, widget.updateCartItem, widget.removeCartItem),
+              CartItem(item, widget.userCart.cartItems[item]!,
+                  widget.updateCartItem, widget.removeCartItem),
           ],
         ),
       ),

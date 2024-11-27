@@ -56,7 +56,7 @@ class _ProductCardState extends State<ProductCard> {
       child: Row(
         children: [
           Text(
-            widget.item.getPrice(),
+            '${widget.item.getPrice()}원',
             style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
           ),
           SizedBox(width: 5),
@@ -84,7 +84,10 @@ class _ProductCardState extends State<ProductCard> {
           widget.item.name,
           style: TextStyle(fontSize: 17, fontWeight: FontWeight.bold),
         ),
-        
+        SizedBox(
+          height: 10,
+        ),
+
         // 상품 설명
         Text(
           "${widget.item.contents}${widget.item.contents}",

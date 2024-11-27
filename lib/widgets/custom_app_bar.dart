@@ -1,4 +1,3 @@
-import 'package:dino_shop/model/cart.dart';
 import 'package:dino_shop/model/manager.dart';
 import 'package:dino_shop/pages/dino_cart_list/dino_cart_list_page.dart';
 import 'package:dino_shop/pages/login/login_page.dart';
@@ -13,9 +12,35 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      title: Text(title),
+      title: Text(
+        title,
+        style: Theme.of(context).appBarTheme.titleTextStyle,
+      ),
+      bottom: PreferredSize(
+        preferredSize: Size.fromHeight(4.0), // 선의 높이 설정
+        child: Container(
+          decoration: BoxDecoration(
+            border: Border(
+              bottom: BorderSide(
+                // 하단 선 설정
+                color: Colors.transparent, // 선 색상 (회색)
+                width: 3, // 선 두께
+              ),
+            ),
+            gradient: LinearGradient(
+              // 그라데이션 설정
+              begin: Alignment.topLeft,
+              end: Alignment.bottomRight,
+              colors: [
+                Color(0xFFA5E78F), // 시작 색상 (연두)
+                Color(0xFFFAEA94), // 끝 색상 (노랑)
+              ],
+            ),
+          ),
+        ),
+      ),
+      scrolledUnderElevation: 0,
       centerTitle: true,
-      backgroundColor: Theme.of(context).appBarTheme.backgroundColor,
       actions: [
         IconButton(
           onPressed: () {
@@ -43,7 +68,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
                         },
                       ),
                       CupertinoDialogAction(
-                        child: Text("확인"),
+                        child: Text("확인", style: TextStyle(color: Colors.blue)),
                         isDefaultAction: true,
                         onPressed: () {
                           isLogined = false;
@@ -56,7 +81,10 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
               );
             }
           },
-          icon: Icon(Icons.account_circle_rounded),
+          icon: Icon(
+            Icons.account_circle_rounded,
+            color: Color(0xFFFFD700),
+          ),
         ),
         IconButton(
           onPressed: () {
@@ -73,7 +101,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
               );
             }
           },
-          icon: Icon(Icons.shopping_cart),
+          icon: Icon(Icons.shopping_cart, color: Color(0xFFFFD700)),
         ),
       ],
     );

@@ -32,7 +32,6 @@ class _CartItemState extends State<CartItem> {
               icon: Icon(Icons.cancel_outlined),
             ),
           ),
-
           Row(
             children: [
               // 제품 이미지
@@ -56,27 +55,30 @@ class _CartItemState extends State<CartItem> {
           Row(
             children: [
               Padding(
-                padding: const EdgeInsets.only(left: 15),
+                padding: const EdgeInsets.only(left: 25),
                 child: Text(
                   widget.item.name,
-                  style: Theme.of(context).textTheme.titleMedium,
+                  style: Theme.of(context).textTheme.bodyLarge,
                 ),
               ),
             ],
           ),
-          Row(
-            children: [
-              // 갯수 조절 버튼
-              ControlItemQuantity(),
+          Padding(
+            padding: const EdgeInsets.only(left: 10),
+            child: Row(
+              children: [
+                // 갯수 조절 버튼
+                ControlItemQuantity(),
 
-              Spacer(),
+                Spacer(),
 
-              // 가격 표시
-              Text(
-                "${MONEY_FORMAT.format(widget.item.price * widget.count)}원",
-                style: Theme.of(context).textTheme.titleMedium,
-              ),
-            ],
+                // 가격 표시
+                Text(
+                  "${MONEY_FORMAT.format(widget.item.price * widget.count)}원",
+                  style: Theme.of(context).textTheme.titleMedium,
+                ),
+              ],
+            ),
           )
         ],
       ),

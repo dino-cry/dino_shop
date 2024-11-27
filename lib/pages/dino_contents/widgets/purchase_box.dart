@@ -86,7 +86,7 @@ class _PurchaseBoxState extends State<PurchaseBox> {
       context: context,
       builder: (context) {
         return CupertinoAlertDialog(
-          title: Text("구매 확인"),
+          title: Text("담기 확인"),
           content: Text("${widget.item.name} ${quantity}개를 장바구니에 담으시겠습니까?"),
           actions: [
             CupertinoDialogAction(
@@ -97,7 +97,10 @@ class _PurchaseBoxState extends State<PurchaseBox> {
               },
             ),
             CupertinoDialogAction(
-              child: Text("확인"),
+              child: Text(
+                "확인",
+                style: TextStyle(color: Colors.blue),
+              ),
               isDefaultAction: true,
               onPressed: () {
                 Navigator.of(context).pop();
@@ -123,18 +126,18 @@ class _PurchaseBoxState extends State<PurchaseBox> {
       context: context,
       builder: (context) {
         return CupertinoAlertDialog(
-          title: Text("구매 완료"),
+          title: Text("담기 완료"),
           content: Text("선택한 상품이 장바구니에 담겼습니다."),
           actions: [
             CupertinoDialogAction(
-              child: Text("닫기"),
+              child: Text("닫기", style: TextStyle(color: Colors.blue)),
               isDefaultAction: true,
               onPressed: () {
                 Navigator.of(context).pop();
               },
             ),
             CupertinoDialogAction(
-              child: Text("장바구니 보러가기"),
+              child: Text("장바구니 보러가기", style: TextStyle(color: Colors.blue)),
               isDefaultAction: true,
               onPressed: () {
                 Navigator.of(context).pop();

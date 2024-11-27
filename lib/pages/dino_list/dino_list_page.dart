@@ -40,30 +40,33 @@ class _DinoListPageState extends State<DinoListPage> {
       appBar: CustomAppBar(title: APP_TITLE),
       body: Column(
         children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.end,
-            children: [
-              //위아래 화살표
-              isAscending
-                  ? Icon(Icons.arrow_downward)
-                  : Icon(Icons.arrow_upward),
-              //가격 정렬 텍스트 버튼
-              TextButton(
-                onPressed: () {
-                  setState(() {
-                    isAscending = !isAscending;
-                    productList.sort((a, b) => isAscending
-                        ? a.price.compareTo(b.price)
-                        : b.price.compareTo(a.price));
-                  });
-                },
-                child: Text(isAscending ? '낮은 가격순' : '높은 가격순'),
-              ),
-            ],
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 10),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                //위아래 화살표
+                isAscending
+                    ? Icon(Icons.arrow_downward)
+                    : Icon(Icons.arrow_upward),
+                //가격 정렬 텍스트 버튼
+                TextButton(
+                  onPressed: () {
+                    setState(() {
+                      isAscending = !isAscending;
+                      productList.sort((a, b) => isAscending
+                          ? a.price.compareTo(b.price)
+                          : b.price.compareTo(a.price));
+                    });
+                  },
+                  child: Text(
+                    isAscending ? '낮은 가격순' : '높은 가격순',
+                    style: TextStyle(fontWeight: FontWeight.bold),
+                  ),
+                ),
+              ],
+            ),
           ),
-          // 실선
-          Container(
-              width: 500, child: Divider(color: Colors.black, thickness: 2.0)),
           Expanded(
             // Expanded로 GridView를 감쌈
             child: Padding(
@@ -77,16 +80,44 @@ class _DinoListPageState extends State<DinoListPage> {
       ),
 
       // 상품 추가 플로팅 버튼
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          Navigator.push(
-            context,
-            MaterialPageRoute(builder: (context) {
-              return DinoRegisterPage();
-            }),
-          );
-        },
-        child: const Icon(Icons.add),
+      floatingActionButton: Container(
+        decoration: BoxDecoration(
+            gradient: LinearGradient(
+                colors: [Color(0xFFFAEA94), Color(0xFFA5E78F)],
+                stops: [0.2, 1],
+                begin: Alignment.topCenter,
+                end: Alignment.bottomCenter),
+            borderRadius: BorderRadius.circular(50),
+            border: Border.all(color: Colors.white, width: 5),
+            boxShadow: [
+              BoxShadow(
+                  color: Color(0xFF005C05).withOpacity(0.3),
+                  spreadRadius: 0,
+                  blurRadius: 3,
+                  offset: Offset(0, 3))
+            ]),
+        child: FloatingActionButton(
+            backgroundColor: Colors.transparent,
+            elevation: 0,
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) {
+                  return DinoRegisterPage();
+                }),
+              );
+            },
+            child: const Icon(
+              Icons.add,
+              color: Colors.white,
+              size: 40,
+              shadows: [
+                Shadow(
+                    color: Color(0x9045AA4A),
+                    offset: Offset(0, 2),
+                    blurRadius: 20)
+              ],
+            )),
       ),
     );
   }
