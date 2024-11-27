@@ -32,13 +32,19 @@ class ProductPrice extends StatelessWidget {
                 textAlign: TextAlign.end,
                 inputFormatters: [
                   // 숫자 외 다른 글자 필터링
-                  FilteringTextInputFormatter.digitsOnly,
+                  FilteringTextInputFormatter(
+                    ProductRegexp.number,
+                    allow: true,
+                  ),
                   // 숫자 포맷(###,###)
                   CurrencyTextInputFormatter(MONEY_FORMAT)
                 ],
                 onChanged: (text) => {
                   if (text != '' && ProductRegexp.number.hasMatch(text))
-                    {setPrice(text)}
+                    {
+                      text = text.replaceAll(',', ''),
+                      setPrice(text),
+                    }
                 },
                 // 빈 값 validation
                 validator: (value) {
