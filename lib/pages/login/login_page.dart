@@ -13,6 +13,7 @@ class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(),
       resizeToAvoidBottomInset: true, // 키보드 올라올 때 화면 자동 조정
       body: GestureDetector(
         behavior: HitTestBehavior.opaque, // 빈 공간 클릭도 감지
