@@ -9,9 +9,7 @@ class ProductInfoView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // 더미텍스트. 디자인 작업 후 삭제. -> 수정완료
-    item.contents =
-        "상품명 : ${item.name}\n상품설명 : ${item.contents}구매금액 : ${item.price}원";
+    var contents = "상품명 : ${item.name}\n상품설명 : ${item.contents}구매금액 : ${item.price}원";
 
     return ListView(
       children: [
@@ -30,12 +28,12 @@ class ProductInfoView extends StatelessWidget {
         const Divider(),
 
         // 상품 상세정보
-        ProductSpec(),
+        ProductSpec(contents),
       ],
     );
   }
 
-  Column ProductSpec() {
+  Column ProductSpec(String contents) {
     return Column(
       children: [
         const Padding(
@@ -50,7 +48,7 @@ class ProductInfoView extends StatelessWidget {
           width: double.infinity,
           padding: EdgeInsets.all(25),
           child: Text(
-            item.contents,
+            contents,
             style: TextStyle(fontSize: 17.5),
           ),
         ),
