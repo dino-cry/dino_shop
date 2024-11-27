@@ -1,4 +1,5 @@
 import 'package:dino_shop/constant.dart';
+import 'package:dino_shop/model/manager.dart';
 import 'package:dino_shop/model/product.dart';
 import 'package:dino_shop/pages/dino_list/widgets/product_card.dart';
 import 'package:dino_shop/pages/dino_register/dino_register_page.dart';
@@ -78,47 +79,51 @@ class _DinoListPageState extends State<DinoListPage> {
           ),
         ],
       ),
-
+      
       // 상품 추가 플로팅 버튼
-      floatingActionButton: Container(
-        decoration: BoxDecoration(
-            gradient: LinearGradient(
-                colors: [Color(0xFFFAEA94), Color(0xFFA5E78F)],
-                stops: [0.2, 1],
-                begin: Alignment.topCenter,
-                end: Alignment.bottomCenter),
-            borderRadius: BorderRadius.circular(50),
-            border: Border.all(color: Colors.white, width: 5),
-            boxShadow: [
-              BoxShadow(
-                  color: Color(0xFF005C05).withOpacity(0.3),
-                  spreadRadius: 0,
-                  blurRadius: 3,
-                  offset: Offset(0, 3))
-            ]),
-        child: FloatingActionButton(
-            backgroundColor: Colors.transparent,
-            elevation: 0,
-            onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) {
-                  return DinoRegisterPage();
-                }),
-              );
-            },
-            child: const Icon(
-              Icons.add,
-              color: Colors.white,
-              size: 40,
-              shadows: [
-                Shadow(
-                    color: Color(0x9045AA4A),
-                    offset: Offset(0, 2),
-                    blurRadius: 20)
-              ],
-            )),
-      ),
+      floatingActionButton: isLogined ? ProductRegisterButton(context) : null
+    );
+  }
+
+  Container ProductRegisterButton(BuildContext context) {
+    return Container(
+      decoration: BoxDecoration(
+          gradient: LinearGradient(
+              colors: [Color(0xFFFAEA94), Color(0xFFA5E78F)],
+              stops: [0.2, 1],
+              begin: Alignment.topCenter,
+              end: Alignment.bottomCenter),
+          borderRadius: BorderRadius.circular(50),
+          border: Border.all(color: Colors.white, width: 5),
+          boxShadow: [
+            BoxShadow(
+                color: Color(0xFF005C05).withOpacity(0.3),
+                spreadRadius: 0,
+                blurRadius: 3,
+                offset: Offset(0, 3))
+          ]),
+      child: FloatingActionButton(
+          backgroundColor: Colors.transparent,
+          elevation: 0,
+          onPressed: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) {
+                return DinoRegisterPage();
+              }),
+            );
+          },
+          child: const Icon(
+            Icons.add,
+            color: Colors.white,
+            size: 40,
+            shadows: [
+              Shadow(
+                  color: Color(0x9045AA4A),
+                  offset: Offset(0, 2),
+                  blurRadius: 20)
+            ],
+          )),
     );
   }
 
